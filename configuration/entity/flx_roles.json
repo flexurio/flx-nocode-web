@@ -1,0 +1,79 @@
+{
+    "id": "flx_users",
+    "label": "Role",
+    "description": "Contains user information, such as username and password, for authentication and authorization.",
+    "fields": [
+        {
+            "label": "ID",
+            "reference": "id",
+            "type": "number",
+            "column_width": 3,
+            "auto_generated": true
+        },
+        {
+            "label": "Endpoint",
+            "reference": "endpoint",
+            "type": "text",
+            "column_width": 3,
+            "required": true,
+            "allow_create": true,
+            "allow_update": true
+        },
+        {
+            "label": "User ID",
+            "reference": "id_users",
+            "type": "number",
+            "column_width": 3,
+            "required": true,
+            "source": "backend.flx_users({id}-{name})",
+            "allow_create": true,
+            "allow_update": true
+        },
+        {
+            "label": "Role",
+            "reference": "role",
+            "type": "permission",
+            "column_width": 30,
+            "required": true,
+            "allow_create": true,
+            "allow_update": true
+        }
+    ],
+    "backend": {
+        "read_all": {
+            "method": "GET",
+            "url": "{backend_host}/flx_roles"
+        },
+        "read": {
+            "method": "GET",
+            "url": "{backend_host}/flx_roles/{id}"
+        },
+        "create": {
+            "method": "POST",
+            "url": "{backend_host}/flx_roles"
+        },
+        "update": {
+            "method": "PUT",
+            "url": "{backend_host}/flx_roles/{id}"
+        },
+        "delete": {
+            "method": "DELETE",
+            "url": "{backend_host}/flx_roles/{id}"
+        }
+    },
+    "layout": {
+        "create": {
+            "Information" : {
+                "endpoint,id_users": 2,
+                "role": 1
+            }
+        },
+        "update": {
+            "Information" : {
+                "id": 1,
+                "endpoint,id_users": 2,
+                "role": 1
+            }
+        }
+    }
+}

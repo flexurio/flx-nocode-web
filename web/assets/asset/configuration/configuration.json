@@ -1,0 +1,57 @@
+{
+    "app_name": "Flexurio",
+    "company": {
+        "id": "03",
+        "name": "VNEU Teknologi Indonesia",
+        "phone": "+628123456789",
+        "website": "https://vneu.co.id",
+        "address": "Jl. Kebayoran Lama No. 1, Jakarta Selatan, Indonesia"
+    },
+    "logo_url": "https://files.catbox.moe/7fl9x7.png",
+    "logo_named_url": "https://files.catbox.moe/0njlru.png",
+    "backend_host": "https://dev-nocode-api.flexurio.com",
+    "theme": {
+        "color": "#6C6EEB",
+        "color_soft": "#CACBFF"
+    },
+    "menu_group": [
+        {
+            "label": "Finance",
+            "menu": [
+                {
+                    "label": "Master",
+                    "icon": "fa fa-money",
+                    "menu_sub": [
+                        {
+                            "label": "Bank",
+                            "entity": "banks"
+                        },
+                        {
+                            "label": "Bank Type",
+                            "entity": "bank_types"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Administrator",
+            "menu": [
+                {
+                    "label": "Account",
+                    "icon": "fa fa-user",
+                    "menu_sub": [
+                        {
+                            "label": "User",
+                            "entity": "flx_users"
+                        },
+                        {
+                            "label": "Role",
+                            "entity": "flx_roles"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

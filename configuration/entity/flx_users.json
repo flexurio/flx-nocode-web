@@ -1,0 +1,125 @@
+{
+    "id": "flx_users",
+    "label": "User",
+    "description": "Contains user information, such as username and password, for authentication and authorization.",
+    "fields": [
+        {
+            "label": "ID",
+            "reference": "id",
+            "type": "number",
+            "column_width": 3,
+            "auto_generated": true
+        },
+        {
+            "label": "Name",
+            "reference": "name",
+            "type": "text",
+            "column_width": 3,
+            "required": true,
+            "pattern": "^[a-zA-Z0-9 ]{3,}$",
+            "min_length": 3,
+            "max_length": 255,
+            "allow_create": true,
+            "allow_update": true
+        },
+        {
+            "label": "Email",
+            "reference": "email",
+            "type": "email",
+            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$",
+            "column_width": 4,
+            "required": true,
+            "allow_create": true,
+            "allow_update": true
+        },
+        {
+            "label": "Email Verified",
+            "reference": "email_verified",
+            "type": "bool",
+            "column_width": 2,
+            "required": true,
+            "allow_create": true,
+            "allow_update": true
+        },
+        {
+            "label": "Phone",
+            "reference": "phone",
+            "type": "text",
+            "column_width": 3,
+            "required": true,
+            "min_length": 9,
+            "max_length": 20,
+            "allow_create": true,
+            "allow_update": true
+        },
+        {
+            "label": "Enabled",
+            "reference": "enabled",
+            "type": "bool",
+            "column_width": 2,
+            "required": true,
+            "allow_create": true,
+            "allow_update": true
+        },
+        {
+            "label": "Created At",
+            "reference": "created_at",
+            "type": "datetime(yyyy-MM-dd HH:mm:ss)",
+            "column_width": 3,
+            "auto_generated": true
+        },
+        {
+            "label": "Updated At",
+            "reference": "updated_at",
+            "type": "datetime(yyyy-MM-dd HH:mm:ss)",
+            "column_width": 3,
+            "auto_generated": true
+        }
+    ],
+    "backend": {
+        "read_all": {
+            "method": "GET",
+            "url": "{backend_host}/flx_users"
+        },
+        "read": {
+            "method": "GET",
+            "url": "{backend_host}/flx_users/{id}"
+        },
+        "create": {
+            "method": "POST",
+            "url": "{backend_host}/flx_users"
+        },
+        "update": {
+            "method": "PUT",
+            "url": "{backend_host}/flx_users/{id}"
+        },
+        "delete": {
+            "method": "DELETE",
+            "url": "{backend_host}/flx_users/{id}"
+        }
+    },
+    "layout": {
+        "create": {
+            "Information" : {
+                "name": 1
+            },
+            "Contact" : {
+                "email,email_verified,phone": 2
+            },
+            "Status" : {
+                "enabled": 1
+            }
+        },
+        "update": {
+            "Information" : {
+                "id,name": 1
+            },
+            "Contact" : {
+                "email,email_verified,phone": 2
+            },
+            "Status" : {
+                "enabled": 1
+            }
+        }
+    }
+}

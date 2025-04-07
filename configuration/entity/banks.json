@@ -1,0 +1,84 @@
+{
+    "id": "banks",
+    "label": "Bank",
+    "description": "The name of the bank where the account is held, used for identifying the financial institution associated with the transaction or account.",
+    "fields": [
+        {
+            "label": "ID",
+            "reference": "id",
+            "type": "number",
+            "column_width": 3,
+            "auto_generated": true
+        },
+        {
+            "label": "Name",
+            "reference": "name",
+            "type": "text",
+            "column_width": 3,
+            "required": true,
+            "pattern": "^[a-zA-Z0-9 ]{3,}$",
+            "min_length": 3,
+            "max_length": 255,
+            "allow_create": true,
+            "allow_update": true
+        },
+        {
+            "label": "Bank Type ID",
+            "reference": "bank_type_id",
+            "type": "number",
+            "column_width": 3,
+            "required": true,
+            "source": "backend.bank_types({id}-{name})",
+            "allow_create": true,
+            "allow_update": true
+        },
+        {
+            "label": "Bank Type Name",
+            "reference": "bank_type_name",
+            "type": "text",
+            "column_width": 3,
+            "auto_generated": true
+        },
+        {
+            "label": "Created At",
+            "reference": "created_at",
+            "type": "datetime(yyyy-MM-dd HH:mm:ss)",
+            "column_width": 3,
+            "auto_generated": true
+        }
+    ],
+    "backend": {
+        "read_all": {
+            "method": "GET",
+            "url": "{backend_host}/banks"
+        },
+        "read": {
+            "method": "GET",
+            "url": "{backend_host}/banks/{id}"
+        },
+        "create": {
+            "method": "POST",
+            "url": "{backend_host}/banks"
+        },
+        "update": {
+            "method": "PUT",
+            "url": "{backend_host}/banks/{id}"
+        },
+        "delete": {
+            "method": "DELETE",
+            "url": "{backend_host}/banks/{id}"
+        }
+    },
+    "layout": {
+        "create": {
+            "Information" : {
+                "name,bank_type_id": 1
+            }
+        },
+        "update": {
+            "Information" : {
+                "id,name,bank_type_id": 1
+            }
+        }
+    }
+}
